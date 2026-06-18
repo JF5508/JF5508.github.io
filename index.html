@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+      Author: Javier Fillalan
+      Date: 6/18/2026
+      Purpose: Creates a portfolio that introduces myself, showcases my projects, and displays ways to get into contact with me.
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>JAVFIL5508 Portfolio</title>
+  </head>
+  <body>
+    <!-- Welcome Message -->
+    <h1 id ="welcomeMessage">Welcome!</h1>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! My name is Javier. I am currently a college student in ECPI who's studying for software development.
+        I'm also a fourth dan black belt in Taekwondo and very interested in game design. I wish to use my abilities in coding 
+        to not only program games but also any projects that need my coding expertise.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="#projects">
+      <h2>Projects</h2>
+
+      <div class="project-container">
+        <a href="" target="_blank">
+          <img src="" alt="Project 1">
+        </a>
+
+        <a href="" target="_blank">
+          <img src="" alt="Project 2">
+        </a>
+
+        <a href="" target="_blank">
+          <img src="" alt="Project 3">
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="content">
+      <h2>Contact Me</h2>
+
+      <form>
+        <label for="name">Sender Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    
+  </body>
+  
+  <script>
+    var userName = prompt("Please enter your name:");
+
+    if (userName && userName.trim()  !== "") {
+      document.getElementById("welcomeMessage").textContent = 
+        "Welcome, " + userName + "!";
+    } else {
+      document.getElementById("welcomeMessage").textContent = 
+        "Welcome, Guest";
+    }
+  </script>
+</html>
