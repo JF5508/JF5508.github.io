@@ -9,11 +9,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>JAVFIL5508 Portfolio</title>
+
+    <style>
+      body {
+        background:white;
+        color:back;
+        transition:.3s;
+      }
+
+      .dark-mode{
+        background:#121212;
+        color:white;
+      }
+
+      .dark-mode a{
+        color:lightblue;
+      }
+
+      .featuredBox{
+        border:2px solid black;
+        padding:20px;
+        margin:15px 0;
+        background:#eeeeee;
+      }
+
+      .dark-mode .featuredBox{
+        background:#333;
+      }
+    </style>
+    
   </head>
   <body>
+
+    <label>
+      <input type="checkbox" id="darkModeToggle">
+      Dark Mode
+    </label>
+    
     <!-- Welcome Message -->
     <h1 id ="welcomeMessage">Welcome!</h1>
-
+    
     <!-- Navigation Menu -->
     <nav>
       <a href="#about">About</a>
@@ -29,32 +64,70 @@
         I'm also a fourth dan black belt in Taekwondo and very interested in game design. I wish to use my abilities in coding 
         to not only program games but also any projects that need my coding expertise.
       </p>
+
+      <h3>Skills</h3>
+
+      <ul id="skillsList"></ul>
     </section>
 
     <!-- Projects Section -->
-    <section id="#projects">
+    <section id="projects">
       <h2>Projects</h2>
 
       <div class="project-container">
-        <a href="https://studentsecpi-my.sharepoint.com/:w:/r/personal/javfil5508_students_ecpi_edu/Documents/2.8%20PA%20Linux.docx?d=w7aa9f3c9362449ae94d7b2d88aeda287&csf=1&web=1&e=0HusrV">
-          <img src="2.8 PA Linux.png" alt="2.8 Linux Performance Assessment">
-        </a>
 
-        <a href="https://studentsecpi-my.sharepoint.com/:w:/r/personal/javfil5508_students_ecpi_edu/Documents/3.6%20PA%20Linux.docx?d=wa27dbdf1f4a24342a5740a6d03769d39&csf=1&web=1&e=qOA6C3">
-          <img src="3.6 PA Linux.png" alt="3.6 Linux Performance Assessment">
-        </a>
+        <div class="project">
+          <a href="https://studentsecpi-my.sharepoint.com/:w:/r/personal/javfil5508_students_ecpi_edu/Documents/2.8%20PA%20Linux.docx?d=w7aa9f3c9362449ae94d7b2d88aeda287&csf=1&web=1&e=0HusrV">
+            <img src="2.8 PA Linux.png" alt="2.8 Linux Performance Assessment">
+          </a>
+        </div>
 
-        <a href="https://github.com/JF5508/Calculator-Program">
-          <img src="OOP5Lab.png" height="300" alt="Calculator Program">
-        </a>
+        <div class="project">
+          <a href="https://studentsecpi-my.sharepoint.com/:w:/r/personal/javfil5508_students_ecpi_edu/Documents/3.6%20PA%20Linux.docx?d=wa27dbdf1f4a24342a5740a6d03769d39&csf=1&web=1&e=qOA6C3">
+            <img src="3.6 PA Linux.png" alt="3.6 Linux Performance Assessment">
+          </a>
+        </div>
+
+        <div class="project">
+          <a href="https://github.com/JF5508/Calculator-Program">
+            <img src="OOP5Lab.png" height="300" alt="Calculator Program">
+          </a>
+        </div>
+        
       </div>
     </section>
 
+
+    <!-- Featured Content -->
+    <section id="featured">
+
+      <h2>Featured Content</h2>
+
+      <div id="universityResources" class="featuredBox">
+
+        <h3>University Resources</h3>
+
+        <a href="https://www.ecpi.edu/">
+          ECPI Home Page
+        </a>
+      </div>
+
+      <div id="personalProjects" class="featuredBox">
+
+        <h3>Personal Projects</h3>
+
+        <a href="https://github.com/JF5508/Calculator-Program">
+          <img src="OOP5Lab.png" width="250">
+        </a>
+        
+      </div>
+    </section>
+    
     <!-- Contact Section -->
-    <section id="content">
+    <section id="contact">
       <h2>Contact Me</h2>
 
-      <form>
+      <form id="contactForm">
         <label for="name">Sender Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -67,13 +140,18 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="5" required></textarea>
 
-        <button type="submit">Submit</button>
+        <button type="submitBtn">
+          Submit
+        </button>
       </form>
     </section>
     
   </body>
   
   <script>
+
+    // Welcome Message
+    
     var userName = prompt("Please enter your name:");
 
     if (userName && userName.trim()  !== "") {
@@ -83,5 +161,70 @@
       document.getElementById("welcomeMessage").textContent = 
         "Welcome, Guest";
     }
+
+
+    // Skills Array + Loop
+
+    const skills = [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "GitHub"
+    ];
+
+    const skillsList = document.getElementById("skillsList");
+
+    skills.forEach(function(skill) {
+      const li = document.createElement("li");
+
+      li.textContent = skill;
+
+      skillsList.appendChild(li);
+      
+    });
+
+    // Featured Content Conditional Logic
+
+    const projectCount = document.querySelectorAll(".project").length;
+
+    const university = 
+    document.getElementById("universityResources");
+
+    const personal =
+    document.getElementById("personalProjects");
+
+    if(projectCount < 3) {
+
+      university.style.display = "block";
+      personal.style.display = "block";
+      
+    } else {
+
+      university.style.display = "none";
+      personal.style.display = "block";
+      
+    }
+
+    const darkToggle =
+    document.getElementById("darkModeToggle");
+
+    darkToggle.addEventListener("change",function(){
+      document.body.classList.toggle("dark-mode");
+    });
+
+    // Contact Form
+
+    const submitBtn =
+    document.getElementById("submitBtn");
+
+    submitBtn.addEventListener("click",function(event){
+      event.preventDefault();
+
+      const name =
+      document.getElementById("name").value;
+
+      alert("Thank you, " + name + ", your message has been sent!");
+    });
   </script>
 </html>
