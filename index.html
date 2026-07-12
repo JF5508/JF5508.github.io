@@ -232,13 +232,13 @@
       const projectsSection = document.querySelector("#projects");
 
       const newProject = document.createElement("p");
-      newProject.textContent = "";
+      newProject.textContent = "More Projects will be added soon!";
 
       projectsSection.appendChild(newProject);
 
       setTimeout(() => {
         const notification = document.createElement("div");
-        notification.textContent = "";
+        notification.textContent = "New Projects coming soon!";
 
         notification.style.backgroundColor = "#4CAF50";
         notification.style.color = "white";
@@ -259,25 +259,17 @@
       aboutSection.style.fontSize = "18px";
 
       const contactForm = document.getElementById("contactForm");
-
-      contactForm.addEventListener("submit", function (event) {
+  
+      const submitBtn = 
+        document.getElementById("submitBtn");
+      submitBtn.addEventListener("click",function(event){
         event.preventDefault();
 
-        if (!status) {
-          status = document.createElement("p");
-          status.id = "formStatus";
-          contactForm.appendChild(status);
-        }
+        const name =
+          document.getElementById("name").value;
 
-        status.textContent = "Sending message...";
-        status.style.color = "orange";
-
-        setTimeout(() => {
-          status.textContent = "Message sent successfully!";
-          status.style.color = "green";
-
-          contactForm.reset();
-        }, 2500);
-    )};
+        alert("Thank you, " + name + ", your message has been sent!");
+      });
+    });
   </script>
 </html>
