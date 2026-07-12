@@ -226,5 +226,58 @@
 
       alert("Thank you, " + name + ", your message has been sent!");
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+      const projectsSection = document.querySelector("#projects");
+
+      const newProject = document.createElement("p");
+      newProject.textContent = "";
+
+      projectsSection.appendChild(newProject);
+
+      setTimeout(() => {
+        const notification = document.createElement("div");
+        notification.textContent = "";
+
+        notification.style.backgroundColor = "#4CAF50";
+        notification.style.color = "white";
+        notification.style.padding = "10px";
+        notification.style.textAlign = "center";
+
+        document.body.prepend(notification);
+      }, 2000);
+
+      const heading = document.querySelector("h1");
+      const aboutSection = document.getElementById("about");
+
+      heading.textContent = "Welcome to my Personal Portfolio!";
+      heading.style.color = "darkblue";
+
+      aboutSection.style.border = "2px solid #333";
+      aboutSection.style.padding = "15px";
+      aboutSection.style.fontSize = "18px";
+
+      const contactForm = document.getElementById("contactForm");
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!status) {
+          status = document.createElement("p");
+          status.id = "formStatus";
+          contactForm.appendChild(status);
+        }
+
+        status.textContent = "Sending message...";
+        status.style.color = "orange";
+
+        setTimeout(() => {
+          status.textContent = "Message sent successfully!";
+          status.style.color = "green";
+
+          contactForm.reset();
+        }, 2500);
+    )};
   </script>
 </html>
